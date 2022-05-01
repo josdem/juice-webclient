@@ -10,15 +10,22 @@ import reactor.core.publisher.Mono;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import javax.annotation.PostConstruct;
+
 @Service
 @RequiredArgsConstructor
 public class BeverageServiceImpl implements BeverageService {
 
     private final ApplicationProperties applicationProperties;
-    private WebClient client = WebClient.create(applicationProperties.getUrl());
+    private WebClient webClient;
+
+    @PostConstruct
+    void setup(){
+        webClient = WebClient.create(applicationProperties.getUrl());
+    }
 
     public Mono<Beverage> getBeverage(Long id){
-        return client.get()
+        return webClient.get()
                 .uri("/beverages/{id}", id).accept(APPLICATION_JSON)
                 .retrieve()
                 .bodyToMono(Beverage.class);
