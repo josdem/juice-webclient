@@ -1,6 +1,5 @@
 package com.josdem.jugoterapia.webclient.service.impl;
 
-import com.josdem.jugoterapia.webclient.config.ApplicationProperties;
 import com.josdem.jugoterapia.webclient.model.Beverage;
 import com.josdem.jugoterapia.webclient.service.BeverageService;
 import lombok.RequiredArgsConstructor;
