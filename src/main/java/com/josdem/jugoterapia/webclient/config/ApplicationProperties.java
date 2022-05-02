@@ -10,5 +10,5 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties("api")
 public class ApplicationProperties {
-    private String url;
+  private String url;
 }

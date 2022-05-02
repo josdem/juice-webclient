@@ -5,6 +5,5 @@ import reactor.core.publisher.Mono;
 
 public interface BeverageService {
 
-    Mono<Beverage> getBeverage(Long id);
-
+  Mono<Beverage> getBeverage(Long id);
 }
