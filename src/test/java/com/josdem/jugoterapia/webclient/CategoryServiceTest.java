@@ -26,10 +26,20 @@ class CategoryServiceTest {
   }
 
   @Test
-  @DisplayName("it validates every category element")
-  void shouldValidateCategoryElements() {
+  @DisplayName("it validates category ids")
+  void shouldValidateCategoryIds() {
     Flux<Integer> categories =
         categoryService.getCategoriesByLanguage("en").map(category -> category.getId());
     StepVerifier.create(categories).expectNext(5, 6, 7, 8).verifyComplete();
+  }
+
+  @Test
+  @DisplayName("it validates category names")
+  void shouldValidateCategoryNames() {
+    Flux<String> categories =
+        categoryService.getCategoriesByLanguage("en").map(category -> category.getName());
+    StepVerifier.create(categories)
+        .expectNext("Healing", "Energy", "Healthy", "Boost")
+        .verifyComplete();
   }
 }
