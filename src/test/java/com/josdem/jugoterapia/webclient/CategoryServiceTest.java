@@ -45,7 +45,11 @@ class CategoryServiceTest {
     Flux<String> categories =
         categoryService.getCategoriesByLanguage("en").map(category -> category.getName());
     StepVerifier.create(categories)
-        .expectNext("Healing", "Energy", "Healthy", "Boost")
+        .expectNext(
+            categoryProperties.getCategories().get(0).getName(),
+            categoryProperties.getCategories().get(1).getName(),
+            categoryProperties.getCategories().get(2).getName(),
+            categoryProperties.getCategories().get(3).getName())
         .verifyComplete();
   }
 }
