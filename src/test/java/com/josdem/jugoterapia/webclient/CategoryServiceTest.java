@@ -15,7 +15,7 @@ class CategoryServiceTest {
   private final CategoryService categoryService;
 
   @Test
-  @DisplayName("it gets categories")
+  @DisplayName("it validates categories size")
   void shouldGetCategories() {
     StepVerifier.create(categoryService.getCategoriesByLanguage("en"))
         .expectNextCount(4)
