@@ -1,6 +1,6 @@
 package com.josdem.jugoterapia.webclient;
 
-import com.josdem.jugoterapia.webclient.response.CategoryData;
+import com.josdem.jugoterapia.webclient.config.CategoryProperties;
 import com.josdem.jugoterapia.webclient.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.DisplayName;
@@ -15,7 +15,7 @@ import reactor.test.StepVerifier;
 class CategoryServiceTest {
 
   private final CategoryService categoryService;
-  private final CategoryData categoryData;
+  private final CategoryProperties categoryProperties;
 
   @Test
   @DisplayName("it validates categories size")
@@ -30,7 +30,9 @@ class CategoryServiceTest {
   void shouldValidateCategoryIds() {
     Flux<Integer> categories =
         categoryService.getCategoriesByLanguage("en").map(category -> category.getId());
-    StepVerifier.create(categories).expectNext(5, 6, 7, 8).verifyComplete();
+    StepVerifier.create(categories)
+        .expectNext(categoryProperties.getCategories().get(0).getId(), 6, 7, 8)
+        .verifyComplete();
   }
 
   @Test

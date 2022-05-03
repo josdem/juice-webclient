@@ -1,2 +1,16 @@
 api:
   url: "https://webflux.josdem.io"
+data:
+  categories:
+    - category:
+      id: 5
+      name: Healing
+    - category:
+      id: 6
+      name: Energy
+    - category:
+      id: 7
+      name: Healthy
+    - category:
+      id: 8
+      name: Boost
