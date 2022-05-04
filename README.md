@@ -1,6 +1,8 @@
 Juice WebClient
 ----------------------------------------
 
+[![Build Status](https://app.travis-ci.com/josdem/juice-webclient.svg?branch=master)](https://app.travis-ci.com/josdem/juice-webclient)
+
 This project shows how to test an API as library using [WebClient](https://docs.spring.io/spring-boot/docs/2.0.3.RELEASE/reference/html/boot-features-webclient.html) with [Junit Jupiter](https://junit.org/junit5/docs/current/user-guide/)
 
 #### To test the project with Gradle
