@@ -2,12 +2,14 @@ package com.josdem.jugoterapia.webclient.service.impl;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.josdem.jugoterapia.webclient.model.Category;
 import com.josdem.jugoterapia.webclient.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @Service
 @RequiredArgsConstructor
@@ -23,5 +25,14 @@ public class CategoryServiceImpl implements CategoryService {
         .accept(APPLICATION_JSON)
         .retrieve()
         .bodyToFlux(Category.class);
+  }
+
+  public Mono<JsonNode> getCategoriesByLanguageJson(String language) {
+    return juiceWebClient
+        .get()
+        .uri("/categories/{language}", language)
+        .accept(APPLICATION_JSON)
+        .retrieve()
+        .bodyToMono(JsonNode.class);
   }
 }
