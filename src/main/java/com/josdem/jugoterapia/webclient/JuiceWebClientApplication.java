@@ -10,10 +10,10 @@ import org.springframework.context.annotation.Bean;
 
 @Slf4j
 @SpringBootApplication
-public class DemoApplication {
+public class JuiceWebClientApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(DemoApplication.class, args);
+    SpringApplication.run(JuiceWebClientApplication.class, args);
   }
 
   @Bean
@@ -24,7 +24,7 @@ public class DemoApplication {
           .getCategoriesByLanguage("en")
           .subscribe(category -> log.info(category.toString()));
       log.info("Displaying beverage by id");
-      beverageService.getBeverage(35L).subscribe(beverage -> log.info(beverage.toString()));
+      beverageService.getBeverage(85L).subscribe(beverage -> log.info(beverage.toString()));
     };
   }
 }

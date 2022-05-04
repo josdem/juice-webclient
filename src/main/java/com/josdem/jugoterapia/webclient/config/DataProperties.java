@@ -1,5 +1,6 @@
 package com.josdem.jugoterapia.webclient.config;
 
+import com.josdem.jugoterapia.webclient.model.Beverage;
 import com.josdem.jugoterapia.webclient.model.Category;
 import java.util.List;
 import lombok.Getter;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Component;
 @Setter
 @Component
 @ConfigurationProperties("data")
-public class CategoryProperties {
+public class DataProperties {
+  private Beverage beverage;
   private List<Category> categories;
 }
