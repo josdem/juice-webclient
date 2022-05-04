@@ -22,11 +22,22 @@ public class CategoryServiceJsonTest {
   private final DataProperties dataProperties;
 
   @Test
-  @DisplayName("it gets categories as json")
-  void shouldGetCategoriesAsJson(TestInfo testInfo) {
+  @DisplayName("it gets categories ids as json")
+  void shouldValidateCategoriesIds(TestInfo testInfo) {
     log.info("Running: {}", testInfo.getDisplayName());
     Mono<List<String>> publisher =
         categoryService.getCategoriesByLanguageJson("en").map(it -> it.findValuesAsText("id"));
     StepVerifier.create(publisher).expectNext(dataProperties.getCategoriesIds()).verifyComplete();
+  }
+
+  @Test
+  @DisplayName("it gets categories values as json")
+  void shouldGetCategoriesValues(TestInfo testInfo) {
+    log.info("Running: {}", testInfo.getDisplayName());
+    Mono<List<String>> publisher =
+        categoryService.getCategoriesByLanguageJson("en").map(it -> it.findValuesAsText("name"));
+    StepVerifier.create(publisher)
+        .expectNext(dataProperties.getCategoriesValues())
+        .verifyComplete();
   }
 }

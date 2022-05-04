@@ -16,4 +16,5 @@ public class DataProperties {
   private Beverage beverage;
   private List<Category> categories;
   private List<String> categoriesIds;
+  private List<String> categoriesValues;
 }
