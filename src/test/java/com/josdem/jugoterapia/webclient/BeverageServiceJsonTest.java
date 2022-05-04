@@ -35,7 +35,21 @@ public class BeverageServiceJsonTest {
                   "beverage",
                   () ->
                       assertEquals(
-                          dataProperties.getBeverage().getId(), beverage.get("id").asLong()));
+                          dataProperties.getBeverage().getId(), beverage.get("id").asLong()),
+                  () ->
+                      assertEquals(
+                          dataProperties.getBeverage().getName(), beverage.get("name").asText()),
+                  () ->
+                      assertEquals(
+                          dataProperties.getBeverage().getIngredients(),
+                          beverage.get("ingredients").asText()),
+                  () ->
+                      assertEquals(
+                          dataProperties.getBeverage().getRecipe(),
+                          beverage.get("recipe").asText()),
+                  () ->
+                      assertEquals(
+                          dataProperties.getBeverage().getImage(), beverage.get("image").asText()));
             })
         .verifyComplete();
   }
