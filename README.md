@@ -15,11 +15,22 @@ gradle test
 mvn test
 ```
 
-### To run a single test
+### To run a single test with Gradle
 
 ```bash
 gradle test --tests ${testName}
 ```
+
+### To run a single test with Maven
+
+```bash
+mvn test -Dtest=${testName}
+```
+
+where:
+
+- `${testName}` is the test name you want to execute
+
 
 #### Read this as reference:
 
