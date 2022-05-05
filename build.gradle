@@ -1,3 +1,12 @@
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath "org.jfrog.buildinfo:build-info-extractor-gradle:latest.release"
+	}
+}
+
 plugins {
 	id 'org.springframework.boot' version '2.6.7'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
@@ -5,9 +14,21 @@ plugins {
 	id 'java'
 }
 
+apply plugin: 'com.jfrog.artifactory'
+apply plugin: 'maven-publish'
+
 group = 'com.josdem.jugoterapia.webclient'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '16'
+
+allprojects {
+	repositories {
+		maven {
+			url "http://asus:8081/artifactory/libs-develop"
+			allowInsecureProtocol true
+		}
+	}
+}
 
 configurations {
 	compileOnly {
@@ -34,6 +55,52 @@ jacocoTestReport {
 		xml.enabled = true
 		html.enabled = true
 		html.destination file("${buildDir}/jacocoHtml")
+	}
+}
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			artifactId = 'juice-webclient'
+			from components.java
+			versionMapping {
+				usage('java-api') {
+					fromResolutionOf('runtimeClasspath')
+				}
+				usage('java-runtime') {
+					fromResolutionResult()
+				}
+			}
+			pom {
+				name = 'juice-webclient'
+				description = 'A Jugoterapia client consumer library'
+				url = 'https://webflux.josdem.io/swagger-ui.html'
+				licenses {
+					license {
+						name = 'The Apache License, Version 2.0'
+						url =  'http://www.apache.org/licenses/LICENSE-2.0.txt'
+					}
+				}
+				developers {
+					developer {
+						id = 'josdem'
+						name = 'Jose Morales'
+						email = 'contact@josdem.io'
+					}
+				}
+			}
+		}
+	}
+	repositories {
+		maven {
+			name = "Jfrog" //  optional target repository name
+			url = "http://asus:8081/artifactory/libs-snapshot-local"
+			allowInsecureProtocol = true
+			credentials {
+				username = "${artifactory_user}"
+				password = "${artifactory_password}"
+			}
+		}
 	}
 }
 
