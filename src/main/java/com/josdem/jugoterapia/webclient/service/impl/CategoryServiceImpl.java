@@ -5,6 +5,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.josdem.jugoterapia.webclient.model.Category;
 import com.josdem.jugoterapia.webclient.service.CategoryService;
+import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -34,5 +35,14 @@ public class CategoryServiceImpl implements CategoryService {
         .accept(APPLICATION_JSON)
         .retrieve()
         .bodyToMono(JsonNode.class);
+  }
+
+  public Flux<Map> getCategoriesByLanguageMap(String language) {
+    return juiceWebClient
+        .get()
+        .uri("/categories/{language}", language)
+        .accept(APPLICATION_JSON)
+        .retrieve()
+        .bodyToFlux(Map.class);
   }
 }
