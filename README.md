@@ -33,6 +33,16 @@ where:
 
 - `${testName}` is the test name you want to execute
 
+### To publish library to artifactory
+
+```bash
+gradle -Partifactory_user=${username} -Partifactory_password=@{password} publishAllPublicationsToJfrogRepository
+```
+
+where:
+
+- ${username} Is artifactory username
+- ${password} Is artifactory password
 
 #### Read this as reference:
 
