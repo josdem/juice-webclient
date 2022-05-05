@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Beverage {
 
-  private Long id;
+  private Integer id;
   private String name;
   private String ingredients;
   private String recipe;

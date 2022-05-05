@@ -24,7 +24,7 @@ public class JuiceWebClientApplication {
           .getCategoriesByLanguage("en")
           .subscribe(category -> log.info(category.toString()));
       log.info("Displaying beverage by id");
-      beverageService.getBeverage(85L).subscribe(beverage -> log.info(beverage.toString()));
+      beverageService.getBeverage(85).subscribe(beverage -> log.info(beverage.toString()));
     };
   }
 }

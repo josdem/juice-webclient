@@ -24,7 +24,7 @@ public class BeverageServiceTest {
   @DisplayName("it gets beverage by id")
   void shouldGetBeverageById(TestInfo testInfo) {
     log.info("Running: {}", testInfo.getDisplayName());
-    Mono<Beverage> publisher = beverageService.getBeverage(85L);
+    Mono<Beverage> publisher = beverageService.getBeverage(85);
     StepVerifier.create(publisher).expectNext(dataProperties.getBeverage()).verifyComplete();
   }
 }
