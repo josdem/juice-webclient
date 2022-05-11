@@ -33,16 +33,36 @@ where:
 
 - `${testName}` is the test name you want to execute
 
-### To publish library to artifactory
+### To publish library to artifactory using Gradle
 
 ```bash
-gradle -Partifactory_user=${username} -Partifactory_password=@{password} publishAllPublicationsToJfrogRepository
+gradle -Partifactory_user=${username} -Partifactory_password=@{password} publish
 ```
 
 where:
 
 - ${username} Is artifactory username
 - ${password} Is artifactory password
+
+### To publish library to artifactory using Maven
+
+```bash
+mvn deploy
+```
+
+Make sure you setup your artifactory credentials in `${USER_HOME}/.m2/settings.xml`
+
+```xml
+<settings>
+  <servers>
+    <server>
+      <id>artifactory</id>
+      <username>username</username>
+      <password>password</password>
+    </server>
+  </servers>
+</settings>
+```
 
 #### Read this as reference:
 
