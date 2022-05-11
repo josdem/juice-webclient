@@ -16,6 +16,12 @@
     <properties>
         <java.version>16</java.version>
     </properties>
+    <distributionManagement>
+        <repository>
+            <id>artifactory</id>
+            <url>http://asus:8081/artifactory/libs-snapshot-local</url>
+        </repository>
+    </distributionManagement>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
