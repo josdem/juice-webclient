@@ -37,8 +37,8 @@ where:
 ### To publish library to artifactory using Gradle
 
 ```bash
-export artifactory_user=${username}
-export artifactory_password=${password}
+export ARTIFACTORY_USER=${username}
+export ARTIFACTORY_PASSWORD=${password}
 gradle publish
 ```
 
