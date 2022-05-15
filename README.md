@@ -2,6 +2,7 @@ Juice WebClient
 ----------------------------------------
 
 [![Build Status](https://app.travis-ci.com/josdem/juice-webclient.svg?branch=master)](https://app.travis-ci.com/josdem/juice-webclient)
+[![Quality Gate Status](https://sonar.josdem.io/api/project_badges/measure?project=com.josdem.jugoterapia.webclient%3Ajuice-webclient&metric=alert_status)](https://sonar.josdem.io/dashboard?id=com.josdem.jugoterapia.webclient%3Ajuice-webclient)
 
 This project shows how to test an API as library using [WebClient](https://docs.spring.io/spring-boot/docs/2.0.3.RELEASE/reference/html/boot-features-webclient.html) with [Junit Jupiter](https://junit.org/junit5/docs/current/user-guide/)
 
@@ -36,13 +37,19 @@ where:
 ### To publish library to artifactory using Gradle
 
 ```bash
-gradle -Partifactory_user=${username} -Partifactory_password=@{password} publish
+gradle -Partifactory_user=${username} -Partifactory_password=${password} publish
 ```
 
 where:
 
 - `${username}` Is artifactory username
 - `${password}` Is artifactory password
+
+#### To run tests with Jacoco and Sonarqube
+
+```bash
+gradle -Partifactory_user=${username} -Partifactory_password=${password} jacocoTestReport sonarqube test
+```
 
 ### To publish library to artifactory using Maven
 
