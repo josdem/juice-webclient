@@ -1,4 +1,4 @@
 language: java
 jdk: openjdk16
 script:
-    - ./gradlew jacocoTestReport test
+    - ./gradlew -Partifactory_user=${ARTIFACTORY_USER} -Partifactory_password=${ARTIFACTORY_PASSWORD} jacocoTestReport sonarqube test
