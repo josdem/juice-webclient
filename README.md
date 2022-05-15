@@ -37,7 +37,9 @@ where:
 ### To publish library to artifactory using Gradle
 
 ```bash
-gradle -Partifactory_user=${username} -Partifactory_password=${password} publish
+export artifactory_user=${username}
+export artifactory_password=${password}
+gradle publish
 ```
 
 where:
@@ -48,7 +50,7 @@ where:
 #### To run tests with Jacoco and Sonarqube
 
 ```bash
-gradle -Partifactory_user=${username} -Partifactory_password=${password} jacocoTestReport sonarqube test
+gradle jacocoTestReport sonarqube test
 ```
 
 ### To publish library to artifactory using Maven
