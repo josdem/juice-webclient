@@ -6,6 +6,11 @@ plugins {
 	id 'java'
 }
 
+ext {
+	artifactory_user = System.getProperty("ARTIFACTORY_USER");
+	artifactory_password = System.getProperty("ARTIFACTORY_PASSWORD");
+}
+
 apply plugin: 'maven-publish'
 
 group = 'com.josdem.jugoterapia.webclient'
@@ -58,8 +63,8 @@ publishing {
 		maven {
 			url = "https://jfrog.josdem.io/artifactory/libs-snapshot-local"
 			credentials {
-				username = "${artifactory_user}"
-				password = "${artifactory_password}"
+				username = "$artifactory_user"
+				password = "$artifactory_password"
 			}
 		}
 	}
