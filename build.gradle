@@ -58,8 +58,8 @@ publishing {
 		maven {
 			url = "https://jfrog.josdem.io/artifactory/libs-snapshot-local"
 			credentials {
-				username = "${artifactory_user}"
-				password = "${artifactory_password}"
+				username = "${ARTIFACTORY_USER}"
+				password = "${ARTIFACTORY_PASSWORD}"
 			}
 		}
 	}
