@@ -16,13 +16,14 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class CategoryServiceImpl implements CategoryService {
 
+  public static final String CATEGORIES_ENDPOINT = "/categories/{language}";
   private final WebClient juiceWebClient;
 
   @Override
   public Flux<Category> getCategoriesByLanguage(String language) {
     return juiceWebClient
         .get()
-        .uri("/categories/{language}", language)
+        .uri(CATEGORIES_ENDPOINT, language)
         .accept(APPLICATION_JSON)
         .retrieve()
         .bodyToFlux(Category.class);
@@ -31,7 +32,7 @@ public class CategoryServiceImpl implements CategoryService {
   public Mono<JsonNode> getCategoriesByLanguageJson(String language) {
     return juiceWebClient
         .get()
-        .uri("/categories/{language}", language)
+        .uri(CATEGORIES_ENDPOINT, language)
         .accept(APPLICATION_JSON)
         .retrieve()
         .bodyToMono(JsonNode.class);
@@ -40,7 +41,7 @@ public class CategoryServiceImpl implements CategoryService {
   public Flux<Map> getCategoriesByLanguageMap(String language) {
     return juiceWebClient
         .get()
-        .uri("/categories/{language}", language)
+        .uri(CATEGORIES_ENDPOINT, language)
         .accept(APPLICATION_JSON)
         .retrieve()
         .bodyToFlux(Map.class);
