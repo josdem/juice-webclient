@@ -30,7 +30,7 @@ public class BeverageServiceImpl implements BeverageService {
   public Mono<JsonNode> getBeverageAsJson(Integer id) {
     return juiceWebClient
         .get()
-        .uri("/beverages/{id}", id)
+        .uri(BEVERAGES_ENDPOINT, id)
         .accept(APPLICATION_JSON)
         .retrieve()
         .bodyToMono(JsonNode.class);
@@ -39,7 +39,7 @@ public class BeverageServiceImpl implements BeverageService {
   public Mono<Map> getBeverageAsMap(Integer id) {
     return juiceWebClient
         .get()
-        .uri("/beverages/{id}", id)
+        .uri(BEVERAGES_ENDPOINT, id)
         .accept(APPLICATION_JSON)
         .retrieve()
         .bodyToMono(Map.class);
