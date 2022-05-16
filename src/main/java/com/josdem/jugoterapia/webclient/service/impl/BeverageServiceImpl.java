@@ -15,12 +15,13 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class BeverageServiceImpl implements BeverageService {
 
+  public static final String BEVERAGES_ENDPOINT = "/beverages/{id}";
   private final WebClient juiceWebClient;
 
   public Mono<Beverage> getBeverage(Integer id) {
     return juiceWebClient
         .get()
-        .uri("/beverages/{id}", id)
+        .uri(BEVERAGES_ENDPOINT, id)
         .accept(APPLICATION_JSON)
         .retrieve()
         .bodyToMono(Beverage.class);
