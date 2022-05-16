@@ -16,7 +16,7 @@ import reactor.test.StepVerifier;
 @Slf4j
 @SpringBootTest
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
-public class BeverageServiceTest {
+class BeverageServiceTest {
   private final BeverageService beverageService;
   private final DataProperties dataProperties;
 

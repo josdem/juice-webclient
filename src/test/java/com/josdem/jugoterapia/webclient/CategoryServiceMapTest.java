@@ -18,7 +18,7 @@ import reactor.test.StepVerifier;
 @Slf4j
 @SpringBootTest
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
-public class CategoryServiceMapTest {
+class CategoryServiceMapTest {
 
   private final CategoryService categoryService;
   private final DataProperties dataProperties;
