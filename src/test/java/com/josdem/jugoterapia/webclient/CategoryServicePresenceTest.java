@@ -19,11 +19,21 @@ class CategoryServicePresenceTest {
 
   @Test
   @DisplayName("it validates Energy category with id 6 exist")
-  void shouldGetCategories(TestInfo testInfo) {
+  void shouldGetCategoryWithIfSix(TestInfo testInfo) {
     log.info("Running: {}", testInfo.getDisplayName());
     StepVerifier.create(
             categoryService.getCategoriesByLanguage("en").filter(category -> category.getId() == 6))
         .expectNextCount(1)
+        .verifyComplete();
+  }
+
+  @Test
+  @DisplayName("it validates category does not exist")
+  void shouldValidateCategoryDoesNotExist(TestInfo testInfo) {
+    log.info("Running: {}", testInfo.getDisplayName());
+    StepVerifier.create(
+            categoryService.getCategoriesByLanguage("en").filter(category -> category.getId() == 9))
+        .expectNextCount(0)
         .verifyComplete();
   }
 }
