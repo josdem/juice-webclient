@@ -79,3 +79,4 @@ Make sure you setup your artifactory credentials in `${USER_HOME}/.m2/settings.x
 
 * https://josdem.io/techtalk/spring/spring_boot_webclient/
 * https://josdem.io/techtalk/spring/spring_webflux_client/
+* https://josdem.io/techtalk/spring/spring_webflux_artifactory_library/
