@@ -73,7 +73,7 @@ Make sure you setup your artifactory credentials in `${USER_HOME}/.m2/settings.x
 </settings>
 ```
 
-**Note** If you want to learn more and publish your own library, feel free to drop me a message on my home page website and ask for a Jfrog credentials.
+**Note:** If you want to learn more and publish your own library, feel free to drop me a message on my home page website and ask for a Jfrog credentials.
 
 #### Read this as reference:
 
