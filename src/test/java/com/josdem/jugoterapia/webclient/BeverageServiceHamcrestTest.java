@@ -1,5 +1,8 @@
 package com.josdem.jugoterapia.webclient;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.josdem.jugoterapia.webclient.config.DataProperties;
 import com.josdem.jugoterapia.webclient.service.BeverageService;
@@ -12,10 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-
-import static org.junit.jupiter.api.Assertions.assertAll;
 
 @Slf4j
 @SpringBootTest
@@ -32,10 +31,13 @@ class BeverageServiceHamcrestTest {
     StepVerifier.create(publisher)
         .assertNext(
             beverage -> {
-                          assertThat(dataProperties.getBeverage().getId(), is(beverage.get("id").asInt()));
-                          assertThat(dataProperties.getBeverage().getName(), is(beverage.get("name").asText()));
-                          assertThat(dataProperties.getBeverage().getIngredients(), is(beverage.get("ingredients").asText()));
-                          assertThat(dataProperties.getBeverage().getRecipe(), is(beverage.get("recipe").asText()));
+              assertThat(dataProperties.getBeverage().getId(), is(beverage.get("id").asInt()));
+              assertThat(dataProperties.getBeverage().getName(), is(beverage.get("name").asText()));
+              assertThat(
+                  dataProperties.getBeverage().getIngredients(),
+                  is(beverage.get("ingredients").asText()));
+              assertThat(
+                  dataProperties.getBeverage().getRecipe(), is(beverage.get("recipe").asText()));
             })
         .verifyComplete();
   }
