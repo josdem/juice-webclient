@@ -9,6 +9,7 @@ plugins {
 ext {
 	artifactory_user = System.getProperty("ARTIFACTORY_USER");
 	artifactory_password = System.getProperty("ARTIFACTORY_PASSWORD");
+	hamcrestVersion = 2.2
 }
 
 apply plugin: 'maven-publish'
@@ -35,6 +36,7 @@ dependencies {
 	testImplementation 'io.projectreactor:reactor-test'
 	testCompileOnly 'org.projectlombok:lombok'
 	testAnnotationProcessor 'org.projectlombok:lombok'
+	testImplementation "org.hamcrest:hamcrest:$hamcrestVersion"
 }
 
 jacocoTestReport {
