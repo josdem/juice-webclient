@@ -32,11 +32,10 @@ class BeverageServiceHamcrestTest {
     StepVerifier.create(publisher)
         .assertNext(
             beverage -> {
-              assertAll(
-                  "beverage",
-                  () ->
-                          assertThat(dataProperties.getBeverage().getId(), is(beverage.get("id").asInt()))
-                  );
+                          assertThat(dataProperties.getBeverage().getId(), is(beverage.get("id").asInt()));
+                          assertThat(dataProperties.getBeverage().getName(), is(beverage.get("name").asText()));
+                          assertThat(dataProperties.getBeverage().getIngredients(), is(beverage.get("ingredients").asText()));
+                          assertThat(dataProperties.getBeverage().getRecipe(), is(beverage.get("recipe").asText()));
             })
         .verifyComplete();
   }
