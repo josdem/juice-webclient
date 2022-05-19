@@ -24,7 +24,7 @@ class BeverageServiceHamcrestTest {
   private final DataProperties dataProperties;
 
   @Test
-  @DisplayName("it gets beverage as json")
+  @DisplayName("it gets beverage as json and validates using Hamcrest")
   void shouldValidateBeverageWithHamcrest(TestInfo testInfo) {
     log.info("Running: {}", testInfo.getDisplayName());
     Mono<JsonNode> publisher = beverageService.getBeverageAsJson(85);
