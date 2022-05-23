@@ -75,6 +75,10 @@ Make sure you setup your artifactory credentials in `${USER_HOME}/.m2/settings.x
 
 **Note:** If you want to learn more and publish your own library, feel free to drop me a message on my home page website and ask for a Jfrog credentials.
 
+#### For more information
+
+Visit our wiki page: [Wiki page](https://github.com/josdem/juice-webclient/wiki)
+
 #### Read this as reference:
 
 * https://josdem.io/techtalk/spring/spring_boot_webclient/
