@@ -18,8 +18,8 @@
     </properties>
     <distributionManagement>
         <repository>
-            <id>artifactory</id>
-            <url>https://jfrog.josdem.io/artifactory/libs-snapshot-local</url>
+            <id>snapshots</id>
+            <url>http://asus:8081/artifactory/libs-snapshot-local</url>
         </repository>
     </distributionManagement>
     <dependencies>
