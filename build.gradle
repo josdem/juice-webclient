@@ -1,5 +1,5 @@
 plugins {
-	id 'org.springframework.boot' version '2.6.7'
+	id 'org.springframework.boot' version '2.6.7' apply false
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id "org.sonarqube" version "3.3"
 	id 'jacoco'
@@ -15,7 +15,7 @@ ext {
 apply plugin: 'maven-publish'
 
 group = 'com.josdem.jugoterapia.webclient'
-version = '0.0.1-SNAPSHOT'
+version = '1.0.0-SNAPSHOT'
 sourceCompatibility = '16'
 
 configurations {
@@ -37,6 +37,12 @@ dependencies {
 	testCompileOnly 'org.projectlombok:lombok'
 	testAnnotationProcessor 'org.projectlombok:lombok'
 	testImplementation "org.hamcrest:hamcrest:$hamcrestVersion"
+}
+
+dependencyManagement {
+	imports{
+		mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
+	}
 }
 
 jacocoTestReport {
