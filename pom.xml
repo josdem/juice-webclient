@@ -11,17 +11,33 @@
     <groupId>com.josdem.jugoterapia.webclient</groupId>
     <artifactId>juice-webclient</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Jugoterapia client library</name>
-    <description>Demo project for Spring Boot</description>
+    <name>juice-webclient</name>
+    <description>Jugoterapia client library</description>
     <properties>
         <java.version>16</java.version>
     </properties>
     <distributionManagement>
         <repository>
             <id>snapshots</id>
-            <url>http://asus:8081/artifactory/libs-snapshot-local</url>
+            <url>https://jfrog.josdem.io/artifactory/libs-snapshot-local</url>
         </repository>
     </distributionManagement>
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>central</id>
+            <name>libs-release</name>
+            <url>https://jfrog.josdem.io/artifactory/libs-release</url>
+        </repository>
+        <repository>
+            <snapshots/>
+            <id>snapshots</id>
+            <name>libs-snapshot</name>
+            <url>https://jfrog.josdem.io/artifactory/libs-snapshot</url>
+        </repository>
+    </repositories>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
