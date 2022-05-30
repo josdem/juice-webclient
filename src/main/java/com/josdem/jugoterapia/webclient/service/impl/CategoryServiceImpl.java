@@ -71,6 +71,11 @@ public class CategoryServiceImpl implements CategoryService {
 
   @Override
   public Flux<Map> getBeveragesByCategoryMap(int category) {
-    return null;
+    return juiceWebClient
+        .get()
+        .uri(BEVERAGES_BY_CATEGORY_ENDPOINT, category)
+        .accept(APPLICATION_JSON)
+        .retrieve()
+        .bodyToFlux(Map.class);
   }
 }
