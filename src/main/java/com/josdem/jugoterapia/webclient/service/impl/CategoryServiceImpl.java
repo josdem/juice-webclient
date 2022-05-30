@@ -68,4 +68,9 @@ public class CategoryServiceImpl implements CategoryService {
         .retrieve()
         .bodyToMono(JsonNode.class);
   }
+
+  @Override
+  public Flux<Map> getBeveragesByCategoryMap(int category) {
+    return null;
+  }
 }

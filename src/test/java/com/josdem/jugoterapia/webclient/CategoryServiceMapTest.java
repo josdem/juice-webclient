@@ -1,5 +1,6 @@
 package com.josdem.jugoterapia.webclient;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.josdem.jugoterapia.webclient.config.DataProperties;
@@ -49,6 +50,22 @@ class CategoryServiceMapTest {
               assertEquals(dataProperties.getCategories().get(3).getId(), category.get("id"));
               assertEquals(dataProperties.getCategories().get(3).getName(), category.get("name"));
             })
+        .verifyComplete();
+  }
+
+  @Test
+  @DisplayName("it gets beverages by category as Map")
+  void shouldGetBeveragesByCategory(TestInfo testInfo) {
+    log.info("Running {}", testInfo.getDisplayName());
+    Flux<Map> publisher =
+        categoryService.getBeveragesByCategoryMap(5).filter(it -> (int) (it.get("id")) == 85);
+    StepVerifier.create(publisher)
+        .assertNext(
+            beverage ->
+                assertAll(
+                    "beverage",
+                    () -> assertEquals("Anti-constipation Smoothie", beverage.get("name")),
+                    () -> assertEquals("1 Apple,1 Pear", beverage.get("ingredients"))))
         .verifyComplete();
   }
 }
