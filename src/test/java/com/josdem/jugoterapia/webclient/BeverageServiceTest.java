@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
@@ -26,5 +27,13 @@ class BeverageServiceTest {
     log.info("Running: {}", testInfo.getDisplayName());
     Mono<Beverage> publisher = beverageService.getBeverage(85);
     StepVerifier.create(publisher).expectNext(dataProperties.getBeverage()).verifyComplete();
+  }
+
+  @Test
+  @DisplayName("it gets beverages by category")
+  void shouldGetBeveragesByCategory(TestInfo testInfo) {
+    log.info("Running {}", testInfo.getDisplayName());
+    Flux<Beverage> publisher = beverageService.getBeveragesByCategory(5);
+    StepVerifier.create(publisher).expectNextCount(4).verifyComplete();
   }
 }
