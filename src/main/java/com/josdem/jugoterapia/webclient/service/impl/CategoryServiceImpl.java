@@ -18,6 +18,7 @@ import reactor.core.publisher.Mono;
 public class CategoryServiceImpl implements CategoryService {
 
   public static final String CATEGORIES_ENDPOINT = "/categories/{language}";
+  public static final String BEVERAGES_BY_CATEGORY_ENDPOINT = "/categories/{category}/beverages";
   private final WebClient juiceWebClient;
 
   @Override
@@ -52,7 +53,7 @@ public class CategoryServiceImpl implements CategoryService {
   public Flux<Beverage> getBeveragesByCategory(int category) {
     return juiceWebClient
         .get()
-        .uri("/categories/{category}/beverages", category)
+        .uri(BEVERAGES_BY_CATEGORY_ENDPOINT, category)
         .accept(APPLICATION_JSON)
         .retrieve()
         .bodyToFlux(Beverage.class);
@@ -60,6 +61,11 @@ public class CategoryServiceImpl implements CategoryService {
 
   @Override
   public Mono<JsonNode> getBeveragesByCategoryJson(int category) {
-    return null;
+    return juiceWebClient
+        .get()
+        .uri(BEVERAGES_BY_CATEGORY_ENDPOINT, category)
+        .accept(APPLICATION_JSON)
+        .retrieve()
+        .bodyToMono(JsonNode.class);
   }
 }

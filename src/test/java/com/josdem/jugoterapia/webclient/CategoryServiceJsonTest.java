@@ -1,5 +1,7 @@
 package com.josdem.jugoterapia.webclient;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import com.josdem.jugoterapia.webclient.config.DataProperties;
 import com.josdem.jugoterapia.webclient.service.CategoryService;
 import java.util.List;
@@ -47,6 +49,11 @@ class CategoryServiceJsonTest {
     log.info("Running {}", testInfo.getDisplayName());
     Mono<List<String>> publisher =
         categoryService.getBeveragesByCategoryJson(5).map(it -> it.findValuesAsText("id"));
-    StepVerifier.create(publisher).expectNextCount(13).verifyComplete();
+    StepVerifier.create(publisher)
+        .assertNext(
+            beverages -> {
+              assertEquals(13, beverages.size(), "should be 13 healthy beverages");
+            })
+        .verifyComplete();
   }
 }
