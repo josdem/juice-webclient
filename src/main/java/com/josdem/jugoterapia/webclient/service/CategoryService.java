@@ -15,4 +15,6 @@ public interface CategoryService {
   Flux<Map> getCategoriesByLanguageMap(String language);
 
   Flux<Beverage> getBeveragesByCategory(int category);
+
+  Mono<JsonNode> getBeveragesByCategoryJson(int category);
 }

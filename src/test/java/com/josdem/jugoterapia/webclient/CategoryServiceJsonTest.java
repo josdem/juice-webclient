@@ -40,4 +40,13 @@ class CategoryServiceJsonTest {
         .expectNext(dataProperties.getCategoriesValues())
         .verifyComplete();
   }
+
+  @Test
+  @DisplayName("it gets beverages by category as json")
+  void shouldGetBeveragesByCategory(TestInfo testInfo) {
+    log.info("Running {}", testInfo.getDisplayName());
+    Mono<List<String>> publisher =
+        categoryService.getBeveragesByCategoryJson(5).map(it -> it.findValuesAsText("id"));
+    StepVerifier.create(publisher).expectNextCount(13).verifyComplete();
+  }
 }
