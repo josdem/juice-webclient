@@ -64,16 +64,18 @@ class CategoryServiceMapTest {
             beverage ->
                 assertAll(
                     "beverage",
-                    () -> assertEquals("Anti-constipation Smoothie", beverage.get("name")),
-                    () -> assertEquals("1 Apple,1 Pear", beverage.get("ingredients")),
+                    () ->
+                        assertEquals(dataProperties.getBeverage().getName(), beverage.get("name")),
                     () ->
                         assertEquals(
-                            "https://storage.googleapis.com/jugoterapia/85.jpg",
-                            beverage.get("image")),
+                            dataProperties.getBeverage().getIngredients(),
+                            beverage.get("ingredients")),
                     () ->
                         assertEquals(
-                            "Start your day with apple and pear without peel getting juice as much as you can utilizing juice extractor or using just a blender. Apple juice contains sorbitol, natural sugar which helps to our body to avoid persistent constipation",
-                            beverage.get("recipe"))))
+                            dataProperties.getBeverage().getRecipe(), beverage.get("recipe")),
+                    () ->
+                        assertEquals(
+                            dataProperties.getBeverage().getImage(), beverage.get("image"))))
         .verifyComplete();
   }
 }
