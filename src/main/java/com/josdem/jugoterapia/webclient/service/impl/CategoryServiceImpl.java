@@ -3,6 +3,7 @@ package com.josdem.jugoterapia.webclient.service.impl;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.josdem.jugoterapia.webclient.model.Beverage;
 import com.josdem.jugoterapia.webclient.model.Category;
 import com.josdem.jugoterapia.webclient.service.CategoryService;
 import java.util.Map;
@@ -45,5 +46,15 @@ public class CategoryServiceImpl implements CategoryService {
         .accept(APPLICATION_JSON)
         .retrieve()
         .bodyToFlux(Map.class);
+  }
+
+  @Override
+  public Flux<Beverage> getBeveragesByCategory(int category) {
+    return juiceWebClient
+        .get()
+        .uri("/categories/{category}/beverages", category)
+        .accept(APPLICATION_JSON)
+        .retrieve()
+        .bodyToFlux(Beverage.class);
   }
 }

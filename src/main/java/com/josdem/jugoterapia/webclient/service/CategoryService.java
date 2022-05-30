@@ -1,6 +1,7 @@
 package com.josdem.jugoterapia.webclient.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.josdem.jugoterapia.webclient.model.Beverage;
 import com.josdem.jugoterapia.webclient.model.Category;
 import java.util.Map;
 import reactor.core.publisher.Flux;
@@ -12,4 +13,6 @@ public interface CategoryService {
   Mono<JsonNode> getCategoriesByLanguageJson(String language);
 
   Flux<Map> getCategoriesByLanguageMap(String language);
+
+  Flux<Beverage> getBeveragesByCategory(int category);
 }

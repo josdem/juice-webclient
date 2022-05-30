@@ -3,7 +3,6 @@ package com.josdem.jugoterapia.webclient.service;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.josdem.jugoterapia.webclient.model.Beverage;
 import java.util.Map;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface BeverageService {
@@ -13,6 +12,4 @@ public interface BeverageService {
   Mono<JsonNode> getBeverageAsJson(Integer id);
 
   Mono<Map> getBeverageAsMap(Integer id);
-
-  Flux<Beverage> getBeveragesByCategory(int category);
 }

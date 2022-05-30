@@ -9,7 +9,6 @@ import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -44,10 +43,5 @@ public class BeverageServiceImpl implements BeverageService {
         .accept(APPLICATION_JSON)
         .retrieve()
         .bodyToMono(Map.class);
-  }
-
-  @Override
-  public Flux<Beverage> getBeveragesByCategory(int category) {
-    return null;
   }
 }

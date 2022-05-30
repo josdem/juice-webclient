@@ -1,6 +1,7 @@
 package com.josdem.jugoterapia.webclient;
 
 import com.josdem.jugoterapia.webclient.config.DataProperties;
+import com.josdem.jugoterapia.webclient.model.Beverage;
 import com.josdem.jugoterapia.webclient.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -57,5 +58,13 @@ class CategoryServiceTest {
             dataProperties.getCategories().get(2).getName(),
             dataProperties.getCategories().get(3).getName())
         .verifyComplete();
+  }
+
+  @Test
+  @DisplayName("it gets beverages by category")
+  void shouldGetBeveragesByCategory(TestInfo testInfo) {
+    log.info("Running {}", testInfo.getDisplayName());
+    Flux<Beverage> publisher = categoryService.getBeveragesByCategory(5);
+    StepVerifier.create(publisher).expectNextCount(13).verifyComplete();
   }
 }
