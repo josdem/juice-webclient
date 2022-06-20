@@ -15,8 +15,8 @@ ext {
 apply plugin: 'maven-publish'
 
 group = 'com.josdem.jugoterapia.webclient'
-version = '1.0.3-SNAPSHOT'
-sourceCompatibility = '16'
+version = '1.0.4-SNAPSHOT'
+sourceCompatibility = 15
 
 configurations {
 	compileOnly {
