@@ -65,6 +65,6 @@ class CategoryServiceTest {
   void shouldGetBeveragesByCategory(TestInfo testInfo) {
     log.info("Running {}", testInfo.getDisplayName());
     Flux<Beverage> publisher = categoryService.getBeveragesByCategory(5);
-    StepVerifier.create(publisher).expectNextCount(13).verifyComplete();
+    StepVerifier.create(publisher).expectNextCount(14).verifyComplete();
   }
 }

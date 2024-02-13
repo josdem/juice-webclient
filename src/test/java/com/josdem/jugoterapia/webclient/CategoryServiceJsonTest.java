@@ -52,7 +52,7 @@ class CategoryServiceJsonTest {
     StepVerifier.create(publisher)
         .assertNext(
             beverages -> {
-              assertEquals(13, beverages.size(), "should be 13 healthy beverages");
+              assertEquals(14, beverages.size(), "should be 13 healthy beverages");
             })
         .verifyComplete();
   }
